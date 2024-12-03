@@ -1,7 +1,17 @@
-# Integrating HTML with Flask
-# HTTP verb GET and POST
+# Undderstanding Jinja2 template engine
+# This helps us to display values in the HTML page, when it passed on to the render_template and url_for function using flask.
 
-# render_template library helps to render HTML script.
+# Below are some important statements: 
+'''
+
+{% ... %} used for conditional statements, for loops
+
+{{ variable name }} used for expressions to print output
+
+{# ... #} used for displaying comments (which will not be rendered)
+
+'''
+
 from flask import Flask, redirect, url_for, render_template, request
 
 app = Flask(__name__)
@@ -36,14 +46,14 @@ def submit():
 @app.route("/results/<int:score>")
 def results(score):
 
-    # condition to show pass or fail
-    result = ""
-    if score >= 50: result = "Pass"
-    else: result = "Fail"
+    # calculating the condition
+    result = "Pass" if score >= 50 else "Fail"
+    
+    # passing more than one parameter in form of dictionary to the HTML page
+    exp = {'score': score, 'result': result}
 
-    # displaying results.html page by passing the result and the marks
     # Remember the parameter name displayed here should match in the HTML page.
-    return render_template('result.html', score = score, result = result) 
+    return render_template('result.html', exp = exp) 
 
 
 if __name__ == "__main__":
