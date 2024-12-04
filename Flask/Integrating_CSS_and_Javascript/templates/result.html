@@ -1,0 +1,31 @@
+<html>
+
+    <h2>Final Results</h2>
+
+    <body> 
+        
+        <!-- IF CONDITION Statement-->
+
+        <!-- Writing if condition to calculate the result based on the score -->
+         {% if exp['score'] >= 50 %}
+         <h1>You have successfully passed the exam with {{ exp['score'] }} marks.</h1>
+
+         {% else %}
+        <h1>Sorry, You have failed the exam with {{ exp['score'] }} marks.</h1>
+         
+         {% endif %} <!-- Remember to write the endif while closing the if condition. -->
+
+         <!-- FOR LOOP - As we are passing expression/dictionary in the render_template we are extracting here using a for loop -->
+          <table>{% for key, value in exp.items()%}</table>
+          
+          <tr>
+            {# Displaying key value pairs below in form of table headers #}
+
+            <th>{{ key }}</th> 
+            <th>{{ value }}</th>
+          </tr>
+
+          {% endfor %} {# for should be closed with closing tag #}
+
+    </body>
+</html>
