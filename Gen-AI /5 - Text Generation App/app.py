@@ -16,18 +16,15 @@ client = AzureOpenAI(
     api_version="2024-05-01-preview",
 )
 
-# Provining the chat prompt
-chat_prompt = [
-   {
-      "role": "user",
-      "content": [
-          {
-            "type": "text",
-            "text": "Write a scene set in ancient Rome, focusing on the daily life of a common citizen."
-          }
-        ]
-    }
-]
+jokes_count = input("Enter the number of jokes you want to generate: ") # Taking input from the user
+
+prompt = f"Generate {jokes_count} jokes about programmers." # Defining the prompt
+
+# Providing the chat prompt
+chat_prompt = [{
+    "role": "user",
+    "content" : prompt
+  }]
 
 # Defining the function that will generate text
 completion = client.chat.completions.create(
@@ -37,6 +34,6 @@ completion = client.chat.completions.create(
   temperature=1.0, # 0.0 is deterministic, 1.0 is maximum randomness
 )
 
-print(completion.to_json()) # printing the generated text
+print(completion.choices[0].message.content) # printing the generated text
 
 
