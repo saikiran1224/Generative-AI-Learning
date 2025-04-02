@@ -4,12 +4,16 @@ from crewai_tools import SerperDevTool # importing External Tools - SerperAPI
 from dotenv import load_dotenv # Environment variables
 load_dotenv()
 
+import os
+
 topic = "Medical Industry using Generative AI" 
 
 # Creating LLM (Tool 1 - Configuring LLM)
 llm = LLM(
-    model="openai/gpt-4o", # call model by provider/model_name
+    model="azure/gpt-4o", # call model by provider/model_name
     temperature=0.8, # 0.8 is default
+    api_key=os.getenv('OPENAI_API_KEY'),
+    api_base=os.getenv('AZURE_OPENAI_ENDPOINT')
 )
 
 # External/3rd Party Tool 2 (Serper API)
