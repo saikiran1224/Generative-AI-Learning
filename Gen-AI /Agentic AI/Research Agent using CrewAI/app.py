@@ -6,8 +6,6 @@ load_dotenv()
 
 import os
 
-topic = "Medical Industry using Generative AI" 
-
 # Creating LLM (Tool 1 - Configuring LLM)
 llm = LLM(
     model="azure/gpt-4o", # call model by provider/model_name
