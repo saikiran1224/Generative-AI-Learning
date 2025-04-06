@@ -6,6 +6,8 @@ load_dotenv()
 
 import os
 
+topic = "Medical Industry" # User input for topic
+
 # Creating LLM (Tool 1 - Configuring LLM)
 llm = LLM(
     model="azure/gpt-4o", # call model by provider/model_name
@@ -37,7 +39,7 @@ senior_research_analyst = Agent(
 # =============================================================================
 research_task = Task(
 
-    description = (f'''
+    description = f'''
       1. Conduct comprehensive research on {topic} including: 
         - The current state of the medical industry
         - The role of AI in the medical industry
@@ -48,8 +50,7 @@ research_task = Task(
       3. Present the report to the team for further discussion and analysis.
       4. Provide recommendations on how AI can be leveraged in the medical industry.
       ''',
-    ),
-
+    
     expected_output = f'''
         A detailed report on the topic of "Medical Industry using Generative AI" including:
             - Overview of the current state of the medical industry
