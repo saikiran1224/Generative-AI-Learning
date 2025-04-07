@@ -10,10 +10,9 @@ topic = "Medical Industry" # User input for topic
 
 # Creating LLM (Tool 1 - Configuring LLM)
 llm = LLM(
-    model="azure/gpt-4o", # call model by provider/model_name
+    model="gemini/gemini-2.0-flash", # call model by provider/model_name
     temperature=0.8, # 0.8 is default
-    api_key=os.getenv('OPENAI_API_KEY'),
-    api_base=os.getenv('AZURE_OPENAI_ENDPOINT')
+    api_key=os.getenv('GEMINI_API_KEY')
 )
 
 # External/3rd Party Tool 2 (Serper API)
@@ -77,7 +76,7 @@ content_writer = Agent(
     ''',
     allow_delegation = False, # allow the agent to delegate/modify other agents
     verbose = True, # show results in terminal 
-    llm = llm # Assigning LLM to Agent
+    llm = llm # Assigning LLM to Agent,
 )
 
 # Creating Task 2 - Task to be performed by Content Writer
@@ -100,9 +99,12 @@ writing_task = Task(
          - Includes the inline citations hyperlinked to the original source URL.
          - Presents information in an accessible yet informative way
          - Follows proper markdown formatting guidelines, use H1 for the title and H3 for the sub-sections
+         - Store the final report in a markdown file named "output.md"
     ''',
 
-    agent = content_writer # Assigning Agent to Task
+    agent = content_writer, # Assigning Agent to Task
+
+    output_file = "output.md" # Output file for the report
 )
 
 # Creating Crew
