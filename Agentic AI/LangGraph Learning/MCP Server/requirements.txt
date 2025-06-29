@@ -1,0 +1,5 @@
+langchain-groq 
+langchain-mcp-adapters 
+mcp # Helps to use FastMCP
+langgraph
+
