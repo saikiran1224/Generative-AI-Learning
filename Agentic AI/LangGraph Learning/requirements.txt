@@ -4,3 +4,6 @@ langsmith
 python-dotenv
 langchain-groq
 langchain_tavily 
+
+# Adding for LangGraph Studio
+langgraph-cli[inmem]

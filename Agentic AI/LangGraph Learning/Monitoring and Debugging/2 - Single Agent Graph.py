@@ -59,8 +59,11 @@ def tool_agent_definition():
 
 tool_agent = tool_agent_definition()
 
-for message in tool_agent.invoke({"messages" : "Can you add 100 and 203?"})["messages"]:
-    message.pretty_print()
+response = tool_agent.invoke({"messages" : "Hello How are you?"})
+
+print(response)
+
+
 
 
 
